@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta name="description"
+        content="A modern, accessible, and responsive notes app built with HTML, SCSS, and JavaScript. This project features a clean design with dark/light mode support, smooth animations, and full accessibility compliance. The app allows users to create, edit, and delete notes, with all data persisted in local storage.">
+    <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/index.css">
+    <link rel="icon" type="image/x-icon" href="../../assets/img/favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="../../assets/img/favicon-32x32.png">
+    <link rel="canonical" href="https://lynqis.io/notes-app-js" />
+    <meta name="author" content="nvmwhoiam">
+    <meta name="keywords" content="">
+    <meta name="theme-color" content="#1a1f2e">
+    <meta name="color-scheme" content="dark light">
+    <meta name="robots" content="index, follow">
+    <meta name="title" content="Notes app | Lynqis.io">
+    <title>Notes app | Lynqis.io</title>
+</head>
+
+<body>
+
+    <main class="main_container">
+
+        <nav class="nav">
+            <div class="nav_left">
+                <button class="btn_btn active" data-btn="all" aria-label="All notes">
+                    <i class="icon_list-solid"></i>
+                    All Notes
+                </button>
+
+                <button class="btn_btn" data-btn="bussines" aria-label="Businnes notes">
+                    <i class="icon_briefcase-solid"></i>
+                    Business
+                </button>
+
+                <button class="btn_btn" data-btn="social" aria-label="Social notes">
+                    <i class="icon_share-nodes-solid"></i>
+                    Social
+                </button>
+
+                <button class="btn_btn" data-btn="important" aria-label="Important notes">
+                    <i class="icon_star-solid"></i>
+                    Important
+                </button>
+            </div>
+
+            <button class="btn_primary" data-btn="add_note">
+                <i class="icon_plus-solid"></i>
+                Add Notes
+            </button>
+        </nav>
+
+        <section class="notes_container GRBg2FHmd9" data-list="notes_container"></section>
+
+    </main>
+
+    <div class="backdrop" data-state="closed">
+
+        <button type="button" class="btn_icon" data-btn="close_modal" aria-label="Close Modal">
+            <i class="icon_xmark-solid"></i>
+        </button>
+
+        <div class="modal" id="noteModal" data-state="closed">
+
+            <div class="modal_content">
+
+                <div class="modal_header">
+
+                    <h2 data-content="modal_title">Add Note</h2>
+                </div>
+
+                <div class="modal_body">
+                    <form method="post" action="#" class="inputs_container" id="notesForm">
+
+                        <div class="input_wrapper">
+                            <label for="note_title">Note Title</label>
+                            <div class="modal_body_input">
+                                <input type="text" name="note_title" id="note_title" aria-label="Note Title" required>
+                            </div>
+                            <div class="form_error">
+                                <small class="login_error error"></small>
+                            </div>
+                        </div>
+
+                        <div class="input_wrapper">
+                            <label for="note_content">Note Content:</label>
+                            <div class="modal_body_input">
+                                <textarea name="note_content" placeholder="Note Content" id="note_content"
+                                    aria-label="Note Content" required>
+                                </textarea>
+                            </div>
+                            <div class="form_error">
+                                <small class="login_error error"></small>
+                            </div>
+                        </div>
+
+                        <div class="inputs_wrapper">
+                            <div class="modal_body_inputs">
+
+                                <select name="note_category" aria-label="Note Category" required>
+                                    <option value="all">All Notes</option>
+                                    <option value="business">Business</option>
+                                    <option value="social">Social</option>
+                                    <option value="important">Important</option>
+                                </select>
+
+                                <input type="date" name="note_date" aria-label="Note Date" required>
+                            </div>
+                        </div>
+
+                        <div class="modal_body_button">
+                            <button type="submit" class="btn_primary" aria-label="Save button">
+                                <span class="btn_txt">Add Note</span>
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script type="module" src="./assets/js/index.js"></script>
+</body>
+
+</html>

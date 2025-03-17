@@ -1,0 +1,173 @@
+@import "./general/root.scss";
+@import "./general/base.scss";
+@import "./general/mixin.scss";
+@import "./general/keyframes.scss";
+
+// v0.0.1
+
+.main_container {
+    padding: var(--md-p);
+
+    .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: var(--md-p);
+        margin-bottom: var(--xl-p);
+
+        &_left {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--md-p);
+
+            .btn_btn {
+                &.active {
+                    background-color: var(--accent-color);
+                }
+            }
+        }
+    }
+
+    .notes_container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: var(--md-p);
+
+        .note_item {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: var(--background-color-secondary);
+            border-radius: var(--border-radius-light);
+
+            &.hide {
+                display: none;
+            }
+
+            &[data-category="all"] {
+                .border {
+                    background: var(--accent-color);
+                }
+            }
+
+            &[data-category="businnes"] {
+                .border {
+                    background: olivedrab;
+                }
+            }
+
+            &[data-category="social"] {
+                .border {
+                    background: aquamarine;
+                }
+            }
+
+            &[data-category="important"] {
+                .border {
+                    background: orangered;
+                }
+            }
+
+            .note_wrapper {
+                display: flex;
+                flex-direction: column;
+                gap: var(--md-p);
+                padding: var(--md-p);
+
+                .note_header {
+                    display: flex;
+                    flex-direction: column;
+                    position: relative;
+
+                    .border {
+                        display: block;
+                        @include position(absolute, $top: 0, $left: -16px);
+                        width: 3px;
+                        height: 100%;
+                    }
+
+                    .note_title {
+                        margin-bottom: var(--xs-p);
+                    }
+
+                    .note_date {
+                        font-size: var(--font-size-small);
+                        color: var(--text-color-secondary);
+                    }
+                }
+
+            }
+
+            .note_actions {
+                display: flex;
+            }
+        }
+    }
+}
+
+.backdrop {
+    width: 100dvw;
+    height: 100dvh;
+    @include position(fixed, $top: 0, $left: 0);
+    @include dataStateFade();
+    z-index: 999;
+
+    .btn_icon {
+        @include position(absolute, $top: var(--md-p), $right: var(--md-p));
+        z-index: 99;
+
+        i {
+            font-size: var(--font-size-3xlarge);
+        }
+    }
+
+    .modal {
+        width: 100%;
+        @include dataStateFade();
+        display: flex;
+        flex-direction: column;
+        gap: var(--xl-p);
+        padding: var(--md-p);
+        background-color: var(--background-color-secondary);
+
+        &_header {
+            text-align: center;
+        }
+
+        &_body {
+            textarea {
+                min-height: 150px;
+                max-height: 300px;
+                resize: vertical;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    }
+
+    @media only screen and (max-width: 768px) {
+        & {
+            .modal {
+                height: 100%;
+            }
+        }
+    }
+
+    @media only screen and (min-width: 768px) {
+        & {
+            @include Dflex(center);
+            background-color: var(--low-opacity);
+            padding: var(--md-p);
+
+            .modal {
+                max-width: 500px;
+                border-radius: var(--border-radius-light);
+            }
+        }
+    }
+}
+
+@import "./general/icons.css";
