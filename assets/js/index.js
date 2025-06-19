@@ -32,9 +32,9 @@ function addNotes(note) {
                 <div class="note_header">
                     <span class="border"></span>
 
-                    <h3 class="note_title">
+                    <h2 class="note_title">
                         ${note.title}
-                    </h3>
+                    </h2>
 
                     <time datetime="${note.createdAt}" class="note_date">
                         ${formatDate(note.createdAt)}
